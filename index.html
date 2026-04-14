@@ -214,82 +214,32 @@ body{font-family:var(--font-body);color:var(--text);background:var(--cream);line
           <input type="email" id="email" name="email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
-          <label for="state">What state do you live in? *</label>
-          <select id="state" name="state" required>
-            <option value="">-- Select State --</option>
-            <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="FL">Florida</option>
-            <option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option>
-            <option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option>
-            <option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option>
-            <option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option>
-            <option value="MI" disabled style="color:#999">Michigan (not eligible)</option>
-            <option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option>
-            <option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option>
-            <option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option><option value="TN">Tennessee</option>
-            <option value="TX" disabled style="color:#999">Texas (not eligible)</option>
-            <option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option>
-            <option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option><option value="DC">Washington D.C.</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="cancerType">Have you been diagnosed with ovarian, fallopian tube, or peritoneal cancer? *</label>
-          <select id="cancerType" name="cancerType" required>
+          <label for="cancerDiag">Have you been diagnosed with ovarian cancer? *</label>
+          <select id="cancerDiag" name="cancerDiag" required>
             <option value="">-- Select --</option>
-            <option value="Epithelial Ovarian Carcinoma">Epithelial Ovarian Carcinoma</option>
-            <option value="Clear Cell Carcinoma">Clear Cell Carcinoma</option>
-            <option value="Endometrioid Carcinoma">Endometrioid Carcinoma</option>
-            <option value="Mucinous Carcinoma">Mucinous Carcinoma</option>
-            <option value="Serous Carcinoma">Serous Carcinoma</option>
-            <option value="Fallopian Tube Cancer">Fallopian Tube Cancer</option>
-            <option value="Primary Peritoneal Carcinoma">Primary Peritoneal Carcinoma</option>
-            <option value="Ovarian Sarcoma">Ovarian Sarcoma (Adenosarcoma, Carcinosarcoma, etc.)</option>
-            <option value="Other Ovarian Cancer">Other ovarian cancer type</option>
-            <option value="Uterine Cancer Only">Uterine cancer only (not ovarian)</option>
-            <option value="No">No cancer diagnosis</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
             <option value="Unsure">Not sure / Awaiting diagnosis</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="talcUsage">Did you use talcum powder in the genital area for 4+ years? *</label>
+          <label for="talcUsage">Did you use talcum powder for 4 or more years? *</label>
           <select id="talcUsage" name="talcUsage" required>
             <option value="">-- Select --</option>
-            <option value="Yes - 4 to 10 years">Yes - 4 to 10 years</option>
-            <option value="Yes - 10 to 20 years">Yes - 10 to 20 years</option>
-            <option value="Yes - 20+ years">Yes - 20+ years</option>
-            <option value="Less than 4 years">Less than 4 years</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
             <option value="Not sure">Not sure</option>
           </select>
         </div>
-        <div class="hero-form-row">
-          <div class="form-group">
-            <label for="diagYear">Year of diagnosis?</label>
-            <input type="text" id="diagYear" name="diagYear" placeholder="e.g. 2020">
-          </div>
-          <div class="form-group">
-            <label for="age">Your age at diagnosis?</label>
-            <input type="text" id="age" name="age" placeholder="e.g. 52">
-          </div>
-        </div>
         <div class="form-group">
-          <label for="attorney">Are you currently represented by an attorney for this matter? *</label>
+          <label for="attorney">Do you currently have an attorney for this? *</label>
           <select id="attorney" name="attorney" required>
             <option value="">-- Select --</option>
             <option value="No">No</option>
             <option value="Yes">Yes</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="details">Briefly describe your situation</label>
-          <input type="text" id="details" name="details" placeholder="Any additional details about your diagnosis">
-        </div>
-        <button type="submit" class="hero-form-submit" id="submitBtn">Submit Free Case Review</button>
+        <button type="submit" class="hero-form-submit" id="submitBtn">Get My Free Case Review</button>
         <p class="form-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           100% confidential &bull; No obligation
@@ -495,8 +445,7 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
   const nameVal = document.getElementById('name').value.trim();
   const phoneVal = document.getElementById('phone').value.trim();
   const emailVal = document.getElementById('email').value.trim();
-  const stateVal = document.getElementById('state').value;
-  const cancerTypeVal = document.getElementById('cancerType').value;
+  const cancerDiagVal = document.getElementById('cancerDiag').value;
   const talcUsageVal = document.getElementById('talcUsage').value;
   const attorneyVal = document.getElementById('attorney').value;
 
@@ -504,16 +453,12 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     alert('Please fill in your name, phone number, and email to submit your case review.');
     return;
   }
-  if (!stateVal) {
-    alert('Please select your state.');
-    return;
-  }
-  if (!cancerTypeVal) {
-    alert('Please select your cancer diagnosis type.');
+  if (!cancerDiagVal) {
+    alert('Please select whether you have been diagnosed with ovarian cancer.');
     return;
   }
   if (!talcUsageVal) {
-    alert('Please select how long you used talcum powder.');
+    alert('Please select whether you used talcum powder for 4+ years.');
     return;
   }
   if (!attorneyVal) {
@@ -529,17 +474,13 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     name: nameVal,
     phone: phoneVal,
     email: emailVal,
-    state: stateVal,
-    cancer_type: cancerTypeVal,
-    talc_usage: talcUsageVal,
-    diagnosis_year: document.getElementById('diagYear').value.trim(),
-    age_at_diagnosis: document.getElementById('age').value.trim(),
-    has_attorney: attorneyVal,
-    details: document.getElementById('details').value.trim()
+    ovarian_cancer_diagnosis: cancerDiagVal,
+    talc_usage_4plus_years: talcUsageVal,
+    has_attorney: attorneyVal
   };
 
   try {
-    await fetch('GOOGLE_APPS_SCRIPT_URL_HERE', {
+    await fetch('https://script.google.com/macros/s/AKfycbzzRRd0TCMM2aI30NxMShokxdJkS8HMeh9XFyy1CZBBhVbkfNALuXRVaXzACQG3A3DTWg/exec', {
       method: 'POST',
       body: JSON.stringify(formData),
       mode: 'no-cors'
