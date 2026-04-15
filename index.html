@@ -497,6 +497,9 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     console.error('Submit error:', err);
   }
 
+  // Track conversion in Google Ads
+  gtag('event', 'conversion', {'send_to': 'AW-18028124514/LB9pCMP9mJwcEOKyvZRD', 'value': 1.0, 'currency': 'USD'});
+
   // Show thank you
   this.style.display = 'none';
   document.getElementById('thankYou').classList.add('show');
