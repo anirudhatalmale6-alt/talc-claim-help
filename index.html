@@ -246,6 +246,7 @@ body{font-family:var(--font-body);color:var(--text);background:var(--cream);line
             <option value="Yes">Yes</option>
           </select>
         </div>
+        <div id="disqualifyMsg" style="display:none;background:rgba(220,60,60,.15);border:1px solid rgba(220,60,60,.4);border-radius:5px;padding:.8rem 1rem;margin-top:.5rem;text-align:center;font-size:.92rem;color:#ff9999">Unfortunately, based on your answers you do not appear to qualify for this claim at this time. If you believe this is an error, please contact us directly.</div>
         <button type="submit" class="hero-form-submit" id="submitBtn">Get My Free Case Review</button>
         <p class="form-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -445,6 +446,27 @@ phoneInput.addEventListener('input', function() {
   else if (v.length >= 3) v = '(' + v.slice(0,3) + ') ' + v.slice(3);
   this.value = v;
 });
+
+// Disqualification check
+function checkQualification() {
+  const c = document.getElementById('cancerDiag').value;
+  const t = document.getElementById('talcUsage').value;
+  const a = document.getElementById('attorney').value;
+  const msg = document.getElementById('disqualifyMsg');
+  const btn = document.getElementById('submitBtn');
+  if (c === 'No' || t === 'No' || a === 'Yes') {
+    msg.style.display = 'block';
+    btn.disabled = true;
+    btn.style.opacity = '.4';
+  } else {
+    msg.style.display = 'none';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  }
+}
+document.getElementById('cancerDiag').addEventListener('change', checkQualification);
+document.getElementById('talcUsage').addEventListener('change', checkQualification);
+document.getElementById('attorney').addEventListener('change', checkQualification);
 
 // Form submission
 document.getElementById('leadForm').addEventListener('submit', async function(e) {
